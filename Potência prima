@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <math.h>
+int proximoprimo(int x);
+int potencia_prima( int n, int * k, int * p );
+
+int main()
+{
+    int n, i = 0, a = 2, x = 2, y, aux = 0;
+    scanf("%d",&n);
+    while (i<n)
+    {
+        x = 2;
+        while (x <= a)
+        {
+            for (y = 1; y <= a; y++)
+            {
+                aux = potencia_prima( a, &x, &y);
+                if (aux == 1)
+                {
+                    break;
+                }
+            }
+            if (aux == 1)
+            {
+                break;
+            }
+            x = proximoprimo(x);
+        }
+        if (aux = 1 && pow(x,y) == a)
+        {
+            //printf("sim");
+            printf("%d : %d^%d\n",a,x,y);
+        }
+        a++;
+        i+=aux;
+        aux = 0;
+    }
+    return 0;
+}
+int proximoprimo(int x)
+{
+    int j = 10, i;
+    printf("ENTREI");
+    while (j > 1)
+    {
+        j = 0;
+        x++;
+        for (i = 1; i <= x/2; i++)
+        {
+            if (x%i==0)
+            {
+                j++;
+            }
+        }
+    }
+    return x;
+}
+int potencia_prima( int n, int * k, int * p )
+{
+    if (pow(*k,*p) == n)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
